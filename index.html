@@ -148,8 +148,9 @@
     .list-item:last-child { border-bottom: none; }
     .prov-name { font-weight: 700; margin-bottom: 4px; }
     .prov-meta { font-size: 11px; color: var(--wire-muted); margin-bottom: 8px; }
-    .phone-link {
+    button.phone-link {
       display: inline-block;
+      margin: 0;
       border: 2px solid var(--wire-line);
       padding: 8px 12px;
       font-family: inherit;
@@ -157,9 +158,9 @@
       cursor: pointer;
       background: var(--wire-paper);
       color: var(--wire-ink);
-      text-decoration: none;
+      text-align: center;
     }
-    .phone-link:hover { background: #f5f5f5; }
+    button.phone-link:hover { background: #f5f5f5; }
 
     .hint-wire {
       font-size: 11px;
@@ -374,21 +375,21 @@
           <div class="list-item">
             <div class="prov-name">Dr. Avery Chen</div>
             <div class="prov-meta">Family medicine · 2.1 mi</div>
-            <a class="phone-link" href="tel:+15555550101" data-provider="Dr. Avery Chen">(555) 555-0101</a>
+            <button type="button" class="phone-link" data-provider="Dr. Avery Chen" aria-label="Simulate call to Dr. Avery Chen, (555) 555-0101">(555) 555-0101</button>
           </div>
           <div class="list-item">
             <div class="prov-name">Dr. Jordan Mills</div>
             <div class="prov-meta">Internal medicine · 3.4 mi</div>
-            <a class="phone-link" href="tel:+15555550202" data-provider="Dr. Jordan Mills">(555) 555-0202</a>
+            <button type="button" class="phone-link" data-provider="Dr. Jordan Mills" aria-label="Simulate call to Dr. Jordan Mills, (555) 555-0202">(555) 555-0202</button>
           </div>
           <div class="list-item">
             <div class="prov-name">Riverside Community Clinic</div>
             <div class="prov-meta">Multi-specialty · 4.0 mi</div>
-            <a class="phone-link" href="tel:+15555550303" data-provider="Riverside Community Clinic">(555) 555-0303</a>
+            <button type="button" class="phone-link" data-provider="Riverside Community Clinic" aria-label="Simulate call to Riverside Community Clinic, (555) 555-0303">(555) 555-0303</button>
           </div>
         </div>
         <p class="hint-wire">
-          Wireframe: after you tap a phone number, use “Back to home” if your device does not return to this screen automatically.
+          Wireframe: tap a number to simulate placing a call, then use “Back to home” to continue the journey.
         </p>
         <button type="button" class="cta" id="btn-back-home-from-providers" style="font-weight:600">
           Back to home
@@ -631,12 +632,12 @@
         tryShowReturnPrompt();
       });
 
-      document.querySelectorAll('.phone-link').forEach(function (a) {
-        a.addEventListener('click', function () {
+      document.querySelectorAll('.phone-link').forEach(function (btn) {
+        btn.addEventListener('click', function () {
           var s = loadState();
           s.pendingReturn = true;
           s.promptShown = false;
-          s.lastProvider = a.getAttribute('data-provider') || '';
+          s.lastProvider = btn.getAttribute('data-provider') || '';
           saveState(s);
         });
       });
