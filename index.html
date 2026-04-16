@@ -315,6 +315,9 @@
       justify-content: center;
       padding: 16px;
     }
+    .modal-overlay.modal-phone {
+      z-index: 35;
+    }
     .modal-overlay.open { display: flex; }
     .modal {
       background: var(--wire-paper);
@@ -534,6 +537,15 @@
         </div>
       </div>
     </div>
+
+    <!-- Phone flow placeholder (browser prototype) -->
+    <div class="modal-overlay modal-phone" id="modal-phone" role="dialog" aria-modal="true" aria-labelledby="modal-phone-title">
+      <div class="modal">
+        <h2 id="modal-phone-title">phone experience here</h2>
+        <p style="margin:0 0 14px">Wireframe placeholder for native dialer / call UI.</p>
+        <button type="button" class="cta" id="btn-phone-dismiss" style="font-weight:600;margin-top:0">OK</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -559,6 +571,7 @@
       var topTitle = document.getElementById('top-title');
       var btnBack = document.getElementById('btn-back');
       var modal = document.getElementById('modal-scheduled');
+      var modalPhone = document.getElementById('modal-phone');
 
       var stack = ['landing'];
 
@@ -604,6 +617,14 @@
         modal.classList.remove('open');
       }
 
+      function openPhoneModal() {
+        modalPhone.classList.add('open');
+      }
+
+      function closePhoneModal() {
+        modalPhone.classList.remove('open');
+      }
+
       function markPromptShown() {
         var s = loadState();
         s.promptShown = true;
@@ -639,7 +660,13 @@
           s.promptShown = false;
           s.lastProvider = btn.getAttribute('data-provider') || '';
           saveState(s);
+          openPhoneModal();
         });
+      });
+
+      document.getElementById('btn-phone-dismiss').addEventListener('click', closePhoneModal);
+      modalPhone.addEventListener('click', function (e) {
+        if (e.target === modalPhone) closePhoneModal();
       });
 
       btnBack.addEventListener('click', function () {
@@ -713,6 +740,7 @@
         stack = ['landing'];
         showScreen('landing');
         closeScheduledModal();
+        closePhoneModal();
         document.querySelectorAll('#visit-checklist input[type="checkbox"]').forEach(function (cb) {
           cb.checked = false;
         });
