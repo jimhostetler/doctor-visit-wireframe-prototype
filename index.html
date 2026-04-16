@@ -197,26 +197,110 @@
     }
     .row-btns .cta { flex: 1; margin-top: 0; font-weight: 600; }
 
-    .checklist {
+    .checklist-accord {
       list-style: none;
       margin: 0;
       padding: 0;
     }
-    .checklist li {
+    .accord-item {
       border: 2px solid var(--wire-line);
       background: var(--wire-paper);
-      padding: 12px;
       margin-bottom: 8px;
+    }
+    .accord-top {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      cursor: pointer;
+      padding: 10px 10px 10px 12px;
     }
-    .checklist input {
+    .accord-top input[type="checkbox"] {
       width: 18px;
       height: 18px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .accord-trigger {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      font: inherit;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+      color: var(--wire-ink);
+    }
+    .accord-trigger:focus-visible {
+      outline: 2px solid var(--wire-line);
+      outline-offset: 2px;
+    }
+    .accord-chev {
+      flex-shrink: 0;
+      font-size: 10px;
+      color: var(--wire-muted);
+      transition: transform 0.15s ease;
+    }
+    .accord-item.open .accord-chev {
+      transform: rotate(-180deg);
+    }
+    .accord-panel {
+      display: none;
+      padding: 0 12px 12px 40px;
+      border-top: 1px dashed var(--wire-dash);
+      font-size: 12px;
+      color: var(--wire-ink);
+    }
+    .accord-item.open .accord-panel {
+      display: block;
+    }
+    .accord-panel p {
+      margin: 10px 0 6px;
+      color: var(--wire-muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .accord-panel ul {
+      margin: 0;
+      padding-left: 1.1em;
+    }
+    .accord-panel li {
+      margin-bottom: 6px;
+    }
+    .accord-panel .sub-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .accord-panel .sub-check input {
+      width: 16px;
+      height: 16px;
       margin-top: 2px;
       flex-shrink: 0;
+    }
+    .pharm-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .pill-innet {
+      border: 1px solid var(--wire-line);
+      padding: 2px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #eee;
     }
 
     /* Modal */
@@ -350,22 +434,82 @@
         <div class="wf-label">Before your visit</div>
         <div class="wf-box" style="border-style:dashed">
           <p style="margin:0 0 12px;font-weight:700">Things to discuss with your doctor</p>
-          <ul class="checklist" id="visit-checklist">
-            <li>
-              <input type="checkbox" id="c1" />
-              <label for="c1">Condition-specific questions</label>
+          <ul class="checklist-accord" id="visit-checklist">
+            <li class="accord-item" data-accord>
+              <div class="accord-top">
+                <input type="checkbox" id="c1" aria-label="Reviewed condition-specific questions" />
+                <button type="button" class="accord-trigger" id="accord-btn-1" aria-expanded="false" aria-controls="accord-panel-1">
+                  <span>Condition-specific questions</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-1" role="region" aria-labelledby="accord-btn-1" aria-hidden="true">
+                <p>Pre-diabetes — example prompts</p>
+                <ul>
+                  <li>What A1c range counts as prediabetes for me, and how often should we repeat labs?</li>
+                  <li>Are my fasting glucose trends concerning, and what target range should I aim for day to day?</li>
+                  <li>Would a short trial of home glucose checks (or a CGM) help us see patterns?</li>
+                  <li>Which changes—carb timing, activity, sleep, weight—move the needle most for insulin resistance?</li>
+                  <li>At what point would you consider medication for prediabetes, and what are the main tradeoffs?</li>
+                </ul>
+              </div>
             </li>
-            <li>
-              <input type="checkbox" id="c2" />
-              <label for="c2">Programs to engage with</label>
+            <li class="accord-item" data-accord>
+              <div class="accord-top">
+                <input type="checkbox" id="c2" aria-label="Reviewed programs to engage with" />
+                <button type="button" class="accord-trigger" id="accord-btn-2" aria-expanded="false" aria-controls="accord-panel-2">
+                  <span>Programs to engage with</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-2" role="region" aria-labelledby="accord-btn-2" aria-hidden="true">
+                <p>Eligible program</p>
+                <div class="wf-box" style="margin:0;padding:10px">
+                  <div style="font-weight:700">Omada</div>
+                  <div style="font-size:11px;color:var(--wire-muted);margin-top:6px">
+                    Digital coaching for sustainable habits—ask if you’re eligible and how enrollment works with your plan.
+                  </div>
+                </div>
+              </div>
             </li>
-            <li>
-              <input type="checkbox" id="c3" />
-              <label for="c3">Most appropriate pharmacy</label>
+            <li class="accord-item" data-accord>
+              <div class="accord-top">
+                <input type="checkbox" id="c3" aria-label="Reviewed pharmacy choice" />
+                <button type="button" class="accord-trigger" id="accord-btn-3" aria-expanded="false" aria-controls="accord-panel-3">
+                  <span>Most appropriate pharmacy</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-3" role="region" aria-labelledby="accord-btn-3" aria-hidden="true">
+                <p>Suggested pickup</p>
+                <div class="pharm-row">
+                  <span><strong>Local pharmacy</strong> — Maple &amp; 4th Family Rx</span>
+                  <span class="pill-innet">In-network</span>
+                </div>
+                <div style="font-size:11px;color:var(--wire-muted)">
+                  Wireframe: confirm preferred location, delivery vs pickup, and 90-day fills if applicable.
+                </div>
+              </div>
             </li>
-            <li>
-              <input type="checkbox" id="c4" />
-              <label for="c4">Discussing medications</label>
+            <li class="accord-item" data-accord>
+              <div class="accord-top">
+                <input type="checkbox" id="c4" aria-label="Reviewed medication topics" />
+                <button type="button" class="accord-trigger" id="accord-btn-4" aria-expanded="false" aria-controls="accord-panel-4">
+                  <span>Discussing medications</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-4" role="region" aria-labelledby="accord-btn-4" aria-hidden="true">
+                <p>Topics to cover</p>
+                <label class="sub-check">
+                  <input type="checkbox" id="c4a" />
+                  <span>Discuss biosimilars</span>
+                </label>
+                <label class="sub-check">
+                  <input type="checkbox" id="c4b" />
+                  <span>Discuss generics</span>
+                </label>
+              </div>
             </li>
           </ul>
         </div>
@@ -535,21 +679,44 @@
         pushView('checklist');
       });
 
+      function setAccordOpen(item, open) {
+        var btn = item.querySelector('.accord-trigger');
+        var panel = item.querySelector('.accord-panel');
+        item.classList.toggle('open', open);
+        if (btn) {
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        if (panel) {
+          panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+      }
+
+      document.querySelectorAll('[data-accord]').forEach(function (item) {
+        var trigger = item.querySelector('.accord-trigger');
+        var cb = item.querySelector('.accord-top input[type="checkbox"]');
+        if (cb) {
+          cb.addEventListener('click', function (e) {
+            e.stopPropagation();
+          });
+        }
+        if (trigger) {
+          trigger.addEventListener('click', function () {
+            var isOpen = item.classList.contains('open');
+            setAccordOpen(item, !isOpen);
+          });
+        }
+      });
+
       document.getElementById('btn-reset-demo').addEventListener('click', function () {
         sessionStorage.removeItem(STORAGE_KEY);
         stack = ['landing'];
         showScreen('landing');
         closeScheduledModal();
-        document.querySelectorAll('#visit-checklist input').forEach(function (cb) {
+        document.querySelectorAll('#visit-checklist input[type="checkbox"]').forEach(function (cb) {
           cb.checked = false;
         });
-      });
-
-      document.querySelectorAll('.checklist li').forEach(function (li) {
-        li.addEventListener('click', function (e) {
-          if (e.target.tagName === 'INPUT') return;
-          var cb = li.querySelector('input[type="checkbox"]');
-          if (cb) cb.checked = !cb.checked;
+        document.querySelectorAll('[data-accord]').forEach(function (item) {
+          setAccordOpen(item, false);
         });
       });
 
