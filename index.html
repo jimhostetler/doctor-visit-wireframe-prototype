@@ -541,6 +541,32 @@
             </li>
             <li class="accord-item" data-accord>
               <div class="accord-top">
+                <input type="checkbox" id="c-labs" aria-label="Reviewed blood work at a covered facility" />
+                <button type="button" class="accord-trigger" id="accord-btn-labs" aria-expanded="false" aria-controls="accord-panel-labs">
+                  <span>Blood work at a covered facility</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-labs" role="region" aria-labelledby="accord-btn-labs" aria-hidden="true">
+                <p>Where to get labs (in-network)</p>
+                <div class="pharm-row">
+                  <span><strong>Riverside Lab — outpatient draw</strong> · near your clinic</span>
+                  <span class="pill-innet">Covered site</span>
+                </div>
+                <div style="font-size:11px;color:var(--wire-muted);margin-bottom:10px">
+                  Wireframe: we only highlight facilities your plan treats as covered for lab draws — using an out‑of‑network lab can affect what you owe.
+                </div>
+                <p>Discuss with your doctor</p>
+                <ul>
+                  <li>Which labs do you need before this visit, and should fasting or timing matter?</li>
+                  <li>Confirm the order is routed to this covered draw site (or lab inside the hospital).</li>
+                  <li>If results aren’t ready in time, do you reschedule, get partial labs, or review what’s available?</li>
+                  <li>Ask how results will tie into medication changes or follow‑up cadence.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="accord-item" data-accord>
+              <div class="accord-top">
                 <input type="checkbox" id="c2" aria-label="Reviewed programs to engage with" />
                 <button type="button" class="accord-trigger" id="accord-btn-2" aria-expanded="false" aria-controls="accord-panel-2">
                   <span>Programs to engage with</span>
