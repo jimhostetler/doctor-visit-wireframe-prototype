@@ -449,6 +449,24 @@
         </div>
       </section>
 
+      <!-- Care type selection -->
+      <section class="screen" id="screen-care-type" aria-label="Care type">
+        <div class="wf-label">Select your visit type</div>
+        <div class="wf-box">
+          <p style="margin:0 0 12px;font-weight:700">What type of care are you looking for?</p>
+          <div class="row-btns">
+            <button type="button" class="cta" id="btn-wellness-visit" style="font-weight:600">Wellness visit</button>
+            <button type="button" class="cta" id="btn-diabetes-care" style="font-weight:600">Diabetes care</button>
+          </div>
+        </div>
+        <div class="wf-box" style="background:#fef3cd;border-color:#ffcc00">
+          <p style="margin:0;font-size:11px;color:var(--wire-muted);font-weight:700;text-transform:uppercase">⚠ Prototype Notice</p>
+          <p style="margin:6px 0 0;font-size:12px;color:var(--wire-muted)">
+            This is a prototype for demonstration purposes only. It does not represent a real insurance product or service.
+          </p>
+        </div>
+      </section>
+
       <!-- Providers -->
       <section class="screen" id="screen-providers" aria-label="Providers">
         <div class="wf-label">In-network near you</div>
@@ -681,6 +699,163 @@
           Reset demo
         </button>
       </section>
+
+      <!-- Wellness Checklist -->
+      <section class="screen" id="screen-checklist-wellness" aria-label="Visit checklist">
+        <div class="wf-label">Before your visit</div>
+        <div class="wf-box" style="border-style:dashed">
+          <div class="checklist-toolbar">
+            <button type="button" class="link-id" id="btn-jump-id-card-wellness" aria-controls="accord-panel-id-wellness">ID card</button>
+          </div>
+          <p style="margin:0 0 12px;font-weight:700">Things to discuss with your doctor</p>
+          <ul class="checklist-accord" id="visit-checklist-wellness">
+            <li class="accord-item" data-accord>
+              <div class="accord-top">
+                <input type="checkbox" id="cw1" aria-label="Reviewed wellness visit topics" />
+                <button type="button" class="accord-trigger" id="accord-btn-w1" aria-expanded="false" aria-controls="accord-panel-w1">
+                  <span>Wellness visit topics</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-w1" role="region" aria-labelledby="accord-btn-w1" aria-hidden="true">
+                <p>Recommended discussions</p>
+                <ul>
+                  <li>Any health concerns you've noticed since your last visit</li>
+                  <li>Preventive screenings appropriate for your age and health history</li>
+                  <li>Immunizations and vaccination status</li>
+                  <li>Lifestyle questions (exercise, nutrition, sleep, stress)</li>
+                  <li>Review of current medications and supplements</li>
+                </ul>
+              </div>
+            </li>
+            <li class="accord-item" data-accord>
+              <div class="accord-top">
+                <input type="checkbox" id="cw-labs" aria-label="Reviewed blood work at a covered facility" />
+                <button type="button" class="accord-trigger" id="accord-btn-w-labs" aria-expanded="false" aria-controls="accord-panel-w-labs">
+                  <span>Blood work at a covered facility</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-w-labs" role="region" aria-labelledby="accord-btn-w-labs" aria-hidden="true">
+                <p>Where to get labs (in-network)</p>
+                <div class="pharm-row">
+                  <span><strong>Riverside Lab — outpatient draw</strong> · near your clinic</span>
+                  <span class="pill-innet">Covered site</span>
+                </div>
+                <div style="font-size:11px;color:var(--wire-muted);margin-bottom:10px">
+                  Wireframe: we only highlight facilities your plan treats as covered for lab draws — using an out‑of‑network lab can affect what you owe.
+                </div>
+                <p>Discuss with your doctor</p>
+                <ul>
+                  <li>Which labs do you need for your wellness visit, and should fasting or timing matter?</li>
+                  <li>Confirm the order is routed to this covered draw site (or lab inside the hospital).</li>
+                  <li>If results aren't ready in time, do you reschedule, get partial labs, or review what's available?</li>
+                </ul>
+              </div>
+            </li>
+            <li class="accord-item" data-accord>
+              <div class="accord-top">
+                <input type="checkbox" id="cw2" aria-label="Reviewed pharmacy choice" />
+                <button type="button" class="accord-trigger" id="accord-btn-w2" aria-expanded="false" aria-controls="accord-panel-w2">
+                  <span>Most appropriate pharmacy</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-w2" role="region" aria-labelledby="accord-btn-w2" aria-hidden="true">
+                <p>Suggested pickup</p>
+                <div class="pharm-row">
+                  <span><strong>Local pharmacy</strong> — Maple &amp; 4th Family Rx</span>
+                  <span class="pill-innet">In-network</span>
+                </div>
+                <div style="font-size:11px;color:var(--wire-muted)">
+                  Wireframe: confirm preferred location, delivery vs pickup, and 90-day fills if applicable.
+                </div>
+              </div>
+            </li>
+            <li class="accord-item" data-accord>
+              <div class="accord-top">
+                <input type="checkbox" id="cw3" aria-label="Reviewed discussion topics" />
+                <button type="button" class="accord-trigger" id="accord-btn-w3" aria-expanded="false" aria-controls="accord-panel-w3">
+                  <span>Discussion topics to note</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-w3" role="region" aria-labelledby="accord-btn-w3" aria-hidden="true">
+                <label class="sub-check">
+                  <input type="checkbox" id="cw3a" />
+                  <span>Discuss biosimilars</span>
+                </label>
+                <label class="sub-check">
+                  <input type="checkbox" id="cw3b" />
+                  <span>Discuss generics</span>
+                </label>
+              </div>
+            </li>
+            <li class="accord-item" id="accord-wrap-id-card-wellness" data-accord>
+              <div class="accord-top">
+                <input type="checkbox" id="cw4" aria-label="Reviewed insurance ID card" />
+                <button type="button" class="accord-trigger" id="accord-btn-id-wellness" aria-expanded="false" aria-controls="accord-panel-id-wellness">
+                  <span>Insurance ID card</span>
+                  <span class="accord-chev" aria-hidden="true">▼</span>
+                </button>
+              </div>
+              <div class="accord-panel" id="accord-panel-id-wellness" role="region" aria-labelledby="accord-btn-id-wellness" aria-hidden="true">
+                <p>Bring to your visit</p>
+                <button type="button" class="btn-id-access" id="btn-id-card-wireframe-wellness" aria-label="Open ID card (wireframe)">
+                  View / add to Wallet (wireframe)
+                </button>
+                <div class="id-card-fake" id="id-card-visual-wellness">
+                  <div class="id-brand">Sample Health · Member ID card</div>
+                  <div class="id-barcode" title="wireframe barcode"></div>
+                  <div class="id-grid">
+                    <div>
+                      <div class="id-field-label">Member</div>
+                      <div class="id-field-value">Jane Q. Sample</div>
+                    </div>
+                    <div>
+                      <div class="id-field-label">Member ID</div>
+                      <div class="id-field-value">ZXY 928 441 003</div>
+                    </div>
+                    <div>
+                      <div class="id-field-label">Group</div>
+                      <div class="id-field-value">WG-0042 · Acme Corp</div>
+                    </div>
+                    <div>
+                      <div class="id-field-label">Plan</div>
+                      <div class="id-field-value">PPO Select</div>
+                    </div>
+                    <div class="id-span-2">
+                      <div class="id-field-label">Rx (wireframe)</div>
+                      <div class="id-field-value">BIN 004336 · PCN ADV · Group RX-88</div>
+                    </div>
+                    <div>
+                      <div class="id-field-label">Effective</div>
+                      <div class="id-field-value">01/01/2026</div>
+                    </div>
+                    <div>
+                      <div class="id-field-label">Payer code</div>
+                      <div class="id-field-value">SH-PLN-009</div>
+                    </div>
+                  </div>
+                  <p style="margin:10px 0 0;font-size:10px;color:var(--wire-muted)">Fake data for prototype only.</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="wf-box" style="background:#fff3cd;border-color:#ffc107;margin-top:12px">
+          <p style="margin:0;font-size:11px;color:var(--wire-muted);font-weight:700;text-transform:uppercase">ℹ Additional charges notice</p>
+          <p style="margin:6px 0 0;font-size:12px;color:var(--wire-muted)">
+            If you discuss health issues outside of your wellness visit scope, you may incur additional costs. Please ask your doctor about any topics not covered under your wellness benefit.
+          </p>
+        </div>
+        <p class="hint-wire" style="margin-top:12px">
+          Wireframe complete — checklist is illustrative. Use "Reset demo" in the modal path or clear site data to run again.
+        </p>
+        <button type="button" class="cta" id="btn-reset-demo-wellness" style="font-weight:600;margin-top:8px">
+          Reset demo
+        </button>
+      </section>
     </div>
 
     <!-- Post–phone-call prompt -->
@@ -711,14 +886,17 @@
 
       var screens = {
         landing: document.getElementById('screen-landing'),
+        careType: document.getElementById('screen-care-type'),
         providers: document.getElementById('screen-providers'),
         datetime: document.getElementById('screen-datetime'),
         alerts: document.getElementById('screen-alerts'),
-        checklist: document.getElementById('screen-checklist')
+        checklist: document.getElementById('screen-checklist'),
+        checklistWellness: document.getElementById('screen-checklist-wellness')
       };
 
       var titles = {
         landing: 'Home',
+        careType: 'Care type',
         providers: 'Providers',
         datetime: 'Schedule',
         alerts: 'Alerts',
@@ -797,6 +975,20 @@
       }
 
       document.getElementById('btn-find-doctor').addEventListener('click', function () {
+        pushView('careType');
+      });
+
+      document.getElementById('btn-wellness-visit').addEventListener('click', function () {
+        var s = loadState();
+        s.careType = 'wellness';
+        saveState(s);
+        pushView('providers');
+      });
+
+      document.getElementById('btn-diabetes-care').addEventListener('click', function () {
+        var s = loadState();
+        s.careType = 'diabetes';
+        saveState(s);
         pushView('providers');
       });
 
@@ -854,14 +1046,24 @@
         var s = loadState();
         s.alertOptIn = true;
         saveState(s);
-        pushView('checklist');
+        var careType = s.careType || 'diabetes';
+        if (careType === 'wellness') {
+          pushView('checklistWellness');
+        } else {
+          pushView('checklist');
+        }
       });
 
       document.getElementById('btn-alert-no').addEventListener('click', function () {
         var s = loadState();
         s.alertOptIn = false;
         saveState(s);
-        pushView('checklist');
+        var careType = s.careType || 'diabetes';
+        if (careType === 'wellness') {
+          pushView('checklistWellness');
+        } else {
+          pushView('checklist');
+        }
       });
 
       function setAccordOpen(item, open) {
@@ -918,6 +1120,39 @@
         closeScheduledModal();
         closePhoneModal();
         document.querySelectorAll('#visit-checklist input[type="checkbox"]').forEach(function (cb) {
+          cb.checked = false;
+        });
+        document.querySelectorAll('[data-accord]').forEach(function (item) {
+          setAccordOpen(item, false);
+        });
+      });
+
+      // Wellness checklist ID card and reset handlers
+      function openIdCardAccordionWellness() {
+        var idAccordWrap = document.getElementById('accord-wrap-id-card-wellness');
+        if (idAccordWrap) {
+          setAccordOpen(idAccordWrap, true);
+          idAccordWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+
+      document.getElementById('btn-jump-id-card-wellness').addEventListener('click', openIdCardAccordionWellness);
+
+      document.getElementById('btn-id-card-wireframe-wellness').addEventListener('click', function () {
+        openIdCardAccordionWellness();
+        var idCardVisual = document.getElementById('id-card-visual-wellness');
+        if (idCardVisual) {
+          idCardVisual.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+
+      document.getElementById('btn-reset-demo-wellness').addEventListener('click', function () {
+        sessionStorage.removeItem(STORAGE_KEY);
+        stack = ['landing'];
+        showScreen('landing');
+        closeScheduledModal();
+        closePhoneModal();
+        document.querySelectorAll('#visit-checklist-wellness input[type="checkbox"]').forEach(function (cb) {
           cb.checked = false;
         });
         document.querySelectorAll('[data-accord]').forEach(function (item) {
